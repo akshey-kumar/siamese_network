@@ -1,0 +1,29 @@
+# Anaconda
+.env/
+.conda/
+
+# Virtual Environments
+venv/
+env/
+ENV/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Logs and results
+logs/
+results/
+
+# Data
+data/faces/
+data/western_blots/
+
+# IDE settings
+.idea/
+
+# System files
+.DS_Store
