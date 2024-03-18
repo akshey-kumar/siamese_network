@@ -14,8 +14,8 @@ class SiameseNetworkDataset(Dataset):
         self.data_dir = data_dir
         self.indices = np.loadtxt(data_dir + '/' + data_indices + '_idx.txt').astype(int)
         self.labels = np.loadtxt(data_dir + '/labels').astype(int)
-        self.labels = 1 - self.labels # note that the original labels (1 = duplicate) need to be inverted for the
-        # contrasitve loss function to work (1 = dissimilar)
+        self.labels = 1 - self.labels  # note that the original labels (1 = duplicate) need to be inverted for the
+        # contrastive loss function to work (1 = dissimilar)
         self.transform = transform
         self.should_invert = should_invert
 
@@ -105,8 +105,8 @@ class ContrastiveLoss(torch.nn.Module):
         self.margin = margin
 
     def forward(self, output1, output2, label):
-        euclidean_distance = F.pairwise_distance(output1, output2, keepdim = True)
-        loss_contrastive = torch.mean((1-label) * torch.pow(euclidean_distance, 2) +
+        euclidean_distance = F.pairwise_distance(output1, output2, keepdim=True)
+        loss_contrastive = torch.mean((1 - label) * torch.pow(euclidean_distance, 2) +
                                       label * torch.pow(torch.clamp(self.margin - euclidean_distance, min=0.0), 2))
 
         return loss_contrastive

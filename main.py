@@ -9,7 +9,7 @@ from siamese_network import SiameseNetwork, ContrastiveLoss, SiameseNetworkDatas
 
 
 class Config:
-    data_dir = "../data/western_blots"
+    data_dir = "data/western_blots"
     train_batch_size = 128
     train_number_epochs = 25
 
